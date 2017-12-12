@@ -1,0 +1,72 @@
+
+1. #!/bin/bash -> #! /bin/sh
+the bash shell is not found on all unixes; on my OpenBSD box it's in
+/usr/local/bin/bash. /bin/sh is found everywhere and is the de-facto standard
+it works just as well with this script as GNU bash. The space after #!
+makes the script also work on some very old BSD systems.
+#i updated this one
+
+2. GNU head (from textutils) has additional features that are not defined
+in POSIX, so most ordinary unix head utilities don't understand the -c
+option. seq (from GNU sh-utils) is mostly found on Linux. i've included
+installation instructions for the open-source BSD's.
+
+3. md5sum is known on BSD as md5
+#this is not used anymore
+
+unfortunately, there is no easy way to test for the existence of the different
+programs. I tried
+
+head_prog=`whereis ghead || whereis head` # ghead = GNU head
+
+but whereis isn't standardized either. which also doesn't work, since it
+includes errors (foo: Command not found) in stdout, and i was too lazy
+to find a work-around. the way configure scripts search for
+programs is excessive and would make this script much longer. So people
+will have to set the {head,seq,md4}_prog variables by hand if something
+doesn't work :(
+
+--
+chris / memeater / xwrits / memwrits
+
+--- ree.orig	Sun Dec 30 07:44:25 2001
++++ ree	Sun Dec 30 07:49:22 2001
+@@ -1,9 +1,24 @@
+-#!/bin/bash
++#! /bin/sh
+ 
+ #rom extension extractor (ported to shell from the pascal version of 1997)
+ #extracts system, scsi, video bios
+ #gurkan@linuks.mine.nu, www.linuks.mine.nu
+ 
++# You need the GNU sh-utils and textutils for this to work.
++# They come with most (all?) Linux distros; BSD users will have to install
++# from the ports/pkgsrc system.
++#
++# FreeBSD, OpenBSD: /usr/ports/misc/sh-utils , /usr/ports/textproc/textutils
++# NetBSD: /usr/pkgsrc/sysutils/sh-utils , /usr/pkgsrc/textproc/textutils
++#
++# Also, you may need to run this script as root, depending on /dev/mem's
++# file permissions.
++
++# choose the utilities which work best for you
++md5_prog=md5sum # or: md5 (BSD)
++seq_prog=seq # or: gseq (BSD, others)
++head_prog=head # or: ghead (BSD, others)
++
+ #scan from c0000 - f0000 in 512 byte blocks
+ #U4{l}{code}
+ #l*512=length of the code including headers
+@@ -12,9 +27,9 @@
+ start=`echo $start/512|bc`
+ last=`echo "ibase=16;F0000"|bc`
+ last=`echo $last/512|bc`
+-for a in `seq $start 1 $last`; do
+-    b=`dd if=/dev/mem skip=$a count=1 2>/dev/null |head -c2`
+-    md5=`echo $b |md5sum`
++for a in `$seq_prog $start 1 $last`; do
++    b=`dd if=/dev/mem skip=$a count=1 2>/dev/null |$head_prog -c2`
++    md5=`echo $b |$md5_prog`
+     if [ "$md5" = "7c77a5106b9621d1e49f8f9542d7ef80" ]; then
+ 	file=`echo "obase=16; $a*512"|bc |tr [A-Z] [a-z]`
+ 	size=`dd if=/dev/mem skip=$a count=1 2>/dev/null |tail -c+3`
