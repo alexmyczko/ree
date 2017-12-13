@@ -3,7 +3,7 @@
 syntax: fontdump videobiosdump.rom
 scans for vga fonts of size 8x8, 8x14 and 8x16 and dumps them to files
 which you can use in the console like this: setfont or consolechars -f 8x16.fnt
-gurkan@linuks.mine.nu, www.linuks.mine.nu
+alex@aiei.ch
 
 character 0 and 255 are "\0"
 meaning we have to look for a pattern like this
