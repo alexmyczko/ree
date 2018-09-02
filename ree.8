@@ -7,8 +7,6 @@ ree \- extract ROM extensions
 This manual page documents briefly the
 .B ree
 command.
-This manual page was written for the Debian distribution
-because the original program does not have a manual page.
 .PP
 \fBree\fP dumps ROM extensions. You can then check easily
 if your network card(s) can netboot with this command:
@@ -16,6 +14,3 @@ if your network card(s) can netboot with this command:
 strings *.rom | grep UNDI > /dev/null && echo Yes it can || echo No
 .SH SEE ALSO
 .BR ndisasm (1).
-.SH AUTHOR
-This manual page was written by G\[:u]rkan Myczko <gurkan@phys.ethz.ch>,
-for the Debian project (but may be used by others).
