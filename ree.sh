@@ -1,15 +1,15 @@
 #! /bin/sh
 
-#rom extension extractor (ported to shell from the pascal version of 1997)
-#see http://www.firmware.com/support/bios/romext.htm for more info
-#extracts system, scsi, video bios
-#gurkan@linuks.mine.nu, www.linuks.mine.nu
+# rom extension extractor (ported to shell from the pascal version of 1997)
+# see http://www.firmware.com/support/bios/romext.htm for more info
+# extracts system, scsi, video bios
+# alex@aiei.ch
 
-#scan from c0000 - f0000 in 512 byte blocks
-#Uª{l}{code}
-#l*512=length of the code including headers
+# scan from c0000 - f0000 in 512 byte blocks
+# UÂª{l}{code}
+# l*512=length of the code including headers
 
-#200 hex = 512, dd wants 512 blocks
+# 200 hex = 512, dd wants 512 blocks
 case "$@" in
     -nbc|--i-dont-have-no-bc)
 	start=1536
@@ -35,7 +35,7 @@ for a in `seq $start 1 $last`; do
 
     echo -ne "[1GPlease wait, scanning... $location"
 
-    if [ "$b" = "Uª" ]; then
+    if [ "$b" = "UÂª" ]; then
 	size=`dd if=/dev/mem skip=$a count=1 2>/dev/null |tail -c+3`
 	s=`echo $size |perl -e 'print ord(<>);'`
 	
@@ -67,5 +67,5 @@ done
 #        count=`echo 1*65536/512|bc`
 #    ;;
 #esac
-#echo -e "\nFound system bios at F0000 (65536)"
-#dd if=/dev/mem of=F0000.rom skip=$start count=$count 2>/dev/null
+# echo -e "\nFound system bios at F0000 (65536)"
+# dd if=/dev/mem of=F0000.rom skip=$start count=$count 2>/dev/null
