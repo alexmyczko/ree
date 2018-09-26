@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b5bebc8b8aed438da6bf0b2a63161d7a)](https://www.codacy.com/app/alexmyczko/ree?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alexmyczko/ree&amp;utm_campaign=Badge_Grade)
+
 # ree
 Extract BIOS ROM extensions
 
