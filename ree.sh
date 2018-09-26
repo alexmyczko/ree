@@ -36,7 +36,7 @@ for a in $(seq $start 1 $last); do
     echo -ne "\033[1GPlease wait, scanning... $location"
 
     if [ "$b" = "Uª" ]; then
-	size=`dd if=/dev/mem skip=$a count=1 2>/dev/null |tail -c+3`
+	size=$(dd if=/dev/mem skip=$a count=1 2>/dev/null |tail -c+3)
 	s=$(echo $size |perl -e 'print ord(<>);')
 	
 	case "$@" in
@@ -45,8 +45,8 @@ for a in $(seq $start 1 $last); do
 		size=$[s*512]
             ;;
 	    *)
-	        file=`echo "obase=16; $a*512"|bc`
-		size=`echo $s*512 |bc`
+	        file=$(echo "obase=16; $a*512"|bc)
+		size=$(echo $s*512 |bc)
 	    ;;
 	esac
 	
