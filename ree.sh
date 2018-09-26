@@ -16,28 +16,28 @@ case "$@" in
         last=1920
     ;;
     *)
-	start=`echo "ibase=16;C0000/200"|bc`
-        last=`echo "ibase=16;F0000/200"|bc`
+	start=$(echo "ibase=16;C0000/200"|bc)
+        last=$(echo "ibase=16;F0000/200"|bc)
     ;;
 esac
 
-for a in `seq $start 1 $last`; do
-    b=`dd if=/dev/mem skip=$a count=1 2>/dev/null |head -c2`
+for a in $(seq $start 1 $last); do
+    b=$(dd if=/dev/mem skip=$a count=1 2>/dev/null |head -c2)
 
     case "$@" in
         -nbc|--i-dont-have-no-bc)
 	    location=$[a*512]
         ;;
         *)
-	    location=`echo "obase=16; $a*512"|bc`
+	    location=$(echo "obase=16; $a*512"|bc)
 	;;
     esac
 
-    echo -ne "[1GPlease wait, scanning... $location"
+    echo -ne "\033[1GPlease wait, scanning... $location"
 
     if [ "$b" = "Uª" ]; then
 	size=`dd if=/dev/mem skip=$a count=1 2>/dev/null |tail -c+3`
-	s=`echo $size |perl -e 'print ord(<>);'`
+	s=$(echo $size |perl -e 'print ord(<>);')
 	
 	case "$@" in
 	    -nbc|--i-dont-have-no-bc)
