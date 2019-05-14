@@ -12,14 +12,15 @@ a checksum of 0 is ok! any other number indicates it is either not a rom
 extension or the rom is defective
 
 scan from c0000 - f0000 in 512 byte blocks
-Uª{l}{code}
+UÂª{l}{code}
 l*512=length of the code including headers
 */
 
 #include <stdio.h>
+#include <string.h>
 #include <strings.h>
 
-char* ID_ROMEXT="Uª"; /* 0x55aa */
+char* ID_ROMEXT="UÂª"; /* 0x55aa */
 
 FILE* f;
 unsigned char buffer[256*1024];
