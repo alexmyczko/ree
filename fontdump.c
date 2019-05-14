@@ -13,6 +13,7 @@ if we want a 8x8 font
 
 #include <stdio.h>
 #include <strings.h>
+#include <stdlib.h>
 
 #define	CHARA 65
 
