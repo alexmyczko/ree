@@ -24,3 +24,8 @@ note
 as most system bios are bigger than 64k nowadays (128k or 256k) and them
 are only 64k memory window reserved, they are not dumped completely, if
 anyone knows how to dump the completely, please contact me
+
+links
+flashrom, https://github.com/flashrom/flashrom
+seabios
+coreboot
