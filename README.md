@@ -26,6 +26,9 @@ are only 64k memory window reserved, they are not dumped completely, if
 anyone knows how to dump the completely, please contact me
 
 links
+
 flashrom, https://github.com/flashrom/flashrom
-seabios
-coreboot
+
+seabios, https://seabios.org/SeaBIOS
+
+coreboot, https://coreboot.org
