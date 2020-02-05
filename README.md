@@ -6,8 +6,8 @@ Extract BIOS ROM extensions
 includes the tool `fontdump` (to extract the fonts from your video bios roms)
 
 make sure you can read /dev/mem (be root)
-`chmod +x ree`
-`./ree`
+`chmod +x ree.sh`
+`./ree.sh`
 
 or use the c version (much faster, and does checksum on the rom extension)
 `make # or gcc ree.c -o ree`
