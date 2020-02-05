@@ -10,8 +10,8 @@ make sure you can read /dev/mem (be root)
 `./ree`
 
 or use the c version (much faster, and does checksum on the rom extension)
-`make # or gcc ree -o ree.bin`
-`./ree.bin`
+`make # or gcc ree.c -o ree`
+`./ree`
 
 will scan your system memory, address c0000 - f0000 in 512 byte steps for
 identification of rom extensions (55,aa), if found it will calculate
