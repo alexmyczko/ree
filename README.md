@@ -23,8 +23,8 @@ original (dos/win9x) version is ree.exe and ree.pas in ree.zip
 ## note
 
 as most system bios are bigger than 64k nowadays (128k or 256k) and them
-are only 64k memory window reserved, they are not dumped completely, if
-anyone knows how to dump the completely, please contact me
+are only 64k memory window reserved, they are not dumped completely.
+use flashrom for complete dumps.
 
 ## links
 
