@@ -41,3 +41,7 @@ amiga font, https://github.com/rewtnull/amigafonts
 cool-retro-term, https://github.com/Swordfish90/cool-retro-term
 
 bdf2sfd, https://github.com/fcambus/bdf2sfd
+
+## packaging status
+
+[![packaging status](https://repology.org/badge/vertical-allrepos/ree.svg)](https://repology.org/project/ree/versions)
