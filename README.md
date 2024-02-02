@@ -28,7 +28,7 @@ Probably most interesting is this:
 
 and its raw data
 
-`xxd /dev/nvram`
+`xxd -g1 /dev/nvram`
 
 ## note
 
