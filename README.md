@@ -24,6 +24,7 @@ original (dos/win9x) version is ree.exe and ree.pas in ree.zip
 
 Probably most interesting is this:
 
+`cat /proc/driver/rtc`
 `cat /proc/driver/nvram`
 
 and its raw data
