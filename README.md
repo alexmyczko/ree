@@ -20,6 +20,16 @@ its size (byte after id, multiplied by 512) and saves that to a .rom file.
 ported to shell from the pascal version of 1997
 original (dos/win9x) version is ree.exe and ree.pas in ree.zip
 
+## BIOS CMOS / NVRAM
+
+Probably most interesting is this:
+
+`cat /proc/driver/nvram`
+
+and its raw data
+
+`xxd /dev/nvram`
+
 ## note
 
 as most system bios are bigger than 64k nowadays (128k or 256k) and them
